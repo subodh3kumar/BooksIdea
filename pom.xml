@@ -54,19 +54,13 @@
                 <version>${compiler.version}</version>
                 <configuration>
                     <release>${java.version}</release>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                    <release>14</release>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
-                <configuration>
-                    <argLine>--enable-preview</argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
