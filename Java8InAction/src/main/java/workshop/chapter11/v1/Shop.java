@@ -22,7 +22,9 @@ public class Shop {
 
     private double calculatePrice(String product) {
         Utils.delay();
-        return random.nextDouble() * product.charAt(0) * product.charAt(1);
+        double nxtDouble = random.nextDouble();
+        //System.out.println("charAt(0): " + product.charAt(0) + " |charAt(1): " + product.charAt(1) + " |next double: " + nxtDouble);
+        return nxtDouble * product.charAt(0) * product.charAt(1);
     }
 
     public Future<Double> getPriceAsync(String product) {
