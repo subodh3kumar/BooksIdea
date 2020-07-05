@@ -22,11 +22,15 @@ public class PriceFinder {
     });
 
     public List<String> findPriceSequential(String product) {
-        return shops.stream().map(shop -> shop.getName() + " price is " + shop.getPrice(product)).collect(Collectors.toList());
+        return shops.stream()
+                .map(shop -> shop.getName() + " price is " + shop.getPrice(product))
+                .collect(Collectors.toList());
     }
 
     public List<String> findPriceParallel(String product) {
-        return shops.parallelStream().map(shop -> shop.getName() + " price is " + shop.getPrice(product)).collect(Collectors.toList());
+        return shops.parallelStream()
+                .map(shop -> shop.getName() + " price is " + shop.getPrice(product))
+                .collect(Collectors.toList());
     }
 
     public List<String> findPriceFuture(String product) {
