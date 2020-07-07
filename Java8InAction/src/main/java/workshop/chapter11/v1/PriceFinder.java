@@ -121,7 +121,8 @@ public class PriceFinder {
                 new Shop("BestPrice"),
                 new Shop("LetsSaveBig"),
                 new Shop("MyFavoriteShop"),
-                new Shop("BuyItAll") /*, new Shop("ShopEasy") */
+                new Shop("BuyItAll"),
+                new Shop("ShopEasy")
         );
     }
 }
