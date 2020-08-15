@@ -26,7 +26,7 @@ class DuplicateCountTest {
     @DisplayName("test null string")
     public void testNullPointerException() {
         Exception exception = assertThrows(NullPointerException.class, () -> {
-            obj.countDuplicateChars(null);
+            obj.countDuplicateCharsJava7(null);
         });
         String expectedMsg = "string is null";
         String actualMsg = exception.getMessage();
@@ -37,7 +37,7 @@ class DuplicateCountTest {
     @DisplayName("test empty string")
     public void testEmptyString() {
         Exception exception = assertThrows(NullPointerException.class, () -> {
-            obj.countDuplicateChars("  ");
+            obj.countDuplicateCharsJava7("  ");
         });
         String expectedMsg = "string is null";
         String actualMsg = exception.getMessage();
@@ -47,6 +47,6 @@ class DuplicateCountTest {
     @Test
     @DisplayName("test non-empty string")
     public void testString() {
-        obj.countDuplicateChars("subodh");
+        assertThat(obj.countDuplicateCharsJava7("hello")).isNotEmpty();
     }
 }
