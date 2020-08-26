@@ -23,7 +23,7 @@ public class DuplicateCount {
                 result.put(ch, 1);
             }
         }
-        result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
+        // result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
         return result;
     }
 
@@ -34,7 +34,7 @@ public class DuplicateCount {
         Map<Character, Long> result = string.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
-        result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
+        // result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
         return result;
     }
 
@@ -48,7 +48,7 @@ public class DuplicateCount {
             char ch = string.charAt(i);
             result.compute(ch, (k, v) -> (v == null) ? 1 : ++v);
         }
-        result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
+        // result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
         return result;
     }
 
@@ -69,12 +69,6 @@ public class DuplicateCount {
                 result.put(deptName, list);
             }
         }
-        result.forEach(this::displayEmployee);
         return result;
-    }
-
-    private void displayEmployee(String deptName, List<Employee> employees) {
-        System.out.println("deptName: " + deptName);
-        System.out.println("employees: " + employees);
     }
 }

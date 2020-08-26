@@ -1,8 +1,12 @@
 package chapter01.problem01;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,7 +26,6 @@ class DuplicateCountTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("test null string")
     public void testNullPointerException() {
         Exception exception = assertThrows(NullPointerException.class, () -> {
@@ -34,7 +37,6 @@ class DuplicateCountTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("test empty string")
     public void testEmptyString() {
         Exception exception = assertThrows(NullPointerException.class, () -> {
@@ -46,21 +48,18 @@ class DuplicateCountTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("count duplicate chars using Java 7")
     public void testCountDuplicateCharsJava7() {
         assertThat(obj.countDuplicateCharsJava7("hello")).isNotEmpty();
     }
 
     @Test
-    @Disabled
     @DisplayName("count duplicate chars using Java 8 stream")
     public void testCountDuplicateCharsJava8Stream() {
         assertThat(obj.countDuplicateCharsJava8Stream("hello")).isNotEmpty();
     }
 
     @Test
-    @Disabled
     @DisplayName("count duplicate chars using Java 8 compute")
     public void testCountDuplicateCharsJava8Compute() {
         assertThat(obj.countDuplicateCharsJava8Compute("hello")).isNotEmpty();
@@ -69,7 +68,9 @@ class DuplicateCountTest {
     @Test
     @DisplayName("employee group by department using Java 7")
     public void testEmployeeByDepartment() {
-        assertThat(obj.getEmployeesByDepartmentUsingJava7(getEmployees())).isNotEmpty();
+        Map<String, List<Employee>> result = obj.getEmployeesByDepartmentUsingJava7(getEmployees());
+        assertThat(result).isNotEmpty();
+        assertThat(result.size()).isEqualTo(3);
     }
 
     public List<Employee> getEmployees() {
