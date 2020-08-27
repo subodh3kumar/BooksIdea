@@ -1,12 +1,16 @@
 package chapter01.problem01;
 
+import model.Employee;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
-public class DuplicateCount {
+import static java.util.stream.Collectors.*;
+
+public class ElementFrequency {
 
     public Map<Character, Integer> countDuplicateCharsJava7(String string) {
         if (string == null || string.trim().equals("")) {
@@ -23,7 +27,6 @@ public class DuplicateCount {
                 result.put(ch, 1);
             }
         }
-        // result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
         return result;
     }
 
@@ -31,11 +34,9 @@ public class DuplicateCount {
         if (string == null || string.trim().equals("")) {
             throw new NullPointerException("string is null");
         }
-        Map<Character, Long> result = string.chars()
+        return string.chars()
                 .mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
-        // result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
-        return result;
+                .collect(groupingBy(c -> c, counting()));
     }
 
     public Map<Character, Long> countDuplicateCharsJava8Compute(String string) {
@@ -48,7 +49,6 @@ public class DuplicateCount {
             char ch = string.charAt(i);
             result.compute(ch, (k, v) -> (v == null) ? 1 : ++v);
         }
-        // result.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v));
         return result;
     }
 
@@ -70,5 +70,27 @@ public class DuplicateCount {
             }
         }
         return result;
+    }
+
+    public Map<String, List<Employee>> getEmployeesByDepartmentUsingJava8(List<Employee> employees) {
+        if (employees == null || employees.isEmpty()) {
+            throw new NullPointerException("employee list is null or empty");
+        }
+        return employees.stream().collect(groupingBy(Employee::getDepartment));
+    }
+
+    public Map<String, List<String>> getEmployeeNameByDepartmentUsingJava8(List<Employee> employees) {
+        if (employees == null || employees.isEmpty()) {
+            throw new NullPointerException("employee list is null or empty");
+        }
+        return employees.stream()
+                .collect(groupingBy(Employee::getDepartment, mapping(Employee::getName, toList())));
+    }
+
+    public Map<String, Long> wordFrequency(List<String> words) {
+        if (words == null || words.isEmpty()) {
+            throw new NullPointerException("employee list is null or empty");
+        }
+        return words.stream().collect(groupingBy(Function.identity(), counting()));
     }
 }
