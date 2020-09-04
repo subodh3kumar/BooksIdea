@@ -1,4 +1,4 @@
-package chapter01.problem01;
+package chapter01;
 
 import model.Employee;
 import org.junit.jupiter.api.*;
@@ -10,18 +10,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class ElementFrequencyTest {
+class P01_ElementFrequencyTest {
 
-    private static ElementFrequency obj;
+    private static P01_ElementFrequency obj;
 
     @BeforeAll
     public static void init() {
-        obj = new ElementFrequency();
-    }
-
-    @AfterAll
-    public static void destroy() {
-        obj = null;
+        obj = new P01_ElementFrequency();
     }
 
     @Test

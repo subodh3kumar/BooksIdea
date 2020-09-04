@@ -1,4 +1,4 @@
-package chapter01.problem01;
+package chapter01;
 
 import model.Employee;
 
@@ -10,7 +10,7 @@ import java.util.function.Function;
 
 import static java.util.stream.Collectors.*;
 
-public class ElementFrequency {
+public class P01_ElementFrequency {
 
     public Map<Character, Integer> countDuplicateCharsJava7(String string) {
         if (string == null || string.trim().equals("")) {
