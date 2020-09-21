@@ -1,5 +1,7 @@
 package workshop.chapter01;
 
+import workshop.model.Apple;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -7,9 +9,7 @@ import java.util.function.Predicate;
 public class FilteringApples {
 
     public static void main(String[] args) {
-        List<Apple> apples = List.of(new Apple(80, "green"),
-                new Apple(155, "green"),
-                new Apple(120, "red"));
+        List<Apple> apples = Apple.getApples();
 
         // Green Apples using Method Reference
         List<Apple> greenApples = filterApples(apples, FilteringApples::isGreenApple);
