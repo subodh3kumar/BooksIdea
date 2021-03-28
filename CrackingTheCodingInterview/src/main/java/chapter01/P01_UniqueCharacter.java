@@ -1,5 +1,6 @@
 package chapter01;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import static java.util.stream.Collectors.counting;
@@ -13,9 +14,7 @@ public class P01_UniqueCharacter {
         }
         word = word.toLowerCase();
         int[] array = new int[26];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = -1;
-        }
+        Arrays.fill(array, -1);
         for (int i = 0; i < word.length(); i++) {
             short index = (short) ('z' - word.charAt(i));
             int value = array[index];
@@ -32,8 +31,9 @@ public class P01_UniqueCharacter {
             throw new NullPointerException("empty string");
         }
         Map<Character, Long> result = word.toLowerCase().chars()
-                .mapToObj(ch -> (char) ch).collect(groupingBy(ch -> ch, counting()));
-        return !result.entrySet().stream().anyMatch(entry -> entry.getValue() > 1);
+                .mapToObj(ch -> (char) ch)
+                .collect(groupingBy(ch -> ch, counting()));
+        return result.entrySet().stream().noneMatch(entry -> entry.getValue() > 1);
     }
 
     public boolean verifyUniqueCharacterUsingBooleanArray(String word) {
@@ -60,7 +60,8 @@ public class P01_UniqueCharacter {
         int checker = 0;
         for (int i = 0; i < word.length(); i++) {
             int value = word.charAt(i) - 'a';
-            if ((checker & (1 << value)) > 0) {
+            boolean flag = (checker & (1 << value)) > 0;
+            if (flag) {
                 return false;
             }
             checker |= (1 << value);

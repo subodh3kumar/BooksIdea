@@ -19,8 +19,7 @@ class P01_UniqueCharacterTest {
     @Order(1)
     @Disabled
     public void testNullOrEmpty() {
-        Exception exception = assertThrows(NullPointerException.class,
-                () -> obj.verifyUniqueCharacterUsingIntArray(""));
+        Exception exception = assertThrows(NullPointerException.class, () -> obj.verifyUniqueCharacterUsingIntArray(""));
         String message = exception.getMessage();
         assertThat(message).isEqualTo("empty string");
     }
@@ -75,7 +74,7 @@ class P01_UniqueCharacterTest {
     @Order(5)
     public void testUniqueCharacterUsingBitwiseOperator() {
         long start = System.currentTimeMillis();
-        boolean result = obj.verifyUniqueCharacterUsingBitwiseOperator("wxyzz");
+        boolean result = obj.verifyUniqueCharacterUsingBitwiseOperator("cdee");
         long end = System.currentTimeMillis();
 
         assertThat(result).isEqualTo(false);
